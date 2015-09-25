@@ -36,18 +36,22 @@ How will this script accomplish its goal?
 
 		* Assumption 1: The default command assumes kmer length 31, it is
  				not clear to me at the outset if this is suitable
-				for MDU's purposes
+				for MDU's purposes. I say we go with 31 for now.
 		* Assumption 2: The default minimiser length is 12. This is a 
 				parameter that will mostly affect speed of search.
 				But, the exact effect of a value (faster/slower)
-				queries must be empirically determined.
+				queries must be empirically determined. I say we
+				start with 12, unless we have reason to believe 
+				we can change this.
 		* Assumption 3: Maximum size of the DB. We can set a maximum size,
 				which once reached, will cause Kraken to subsample
 				kmer:taxon pairs to fit within the limits. Or, allow
 				it to be as big as it needs to be. The default is to
-				let it grow as much as it needs to.
+				let it grow as much as it needs to. As an initial pass
+				that might do us ok, so at least we can see how big
+				it can get!
 		* Assumption 4: We can and should parallelise this step. I am thinking
-				at 36 threads?
+				at least 36 threads?
 
 	4. OPTIONAL Thin the database
 	   Sample command:
@@ -56,7 +60,7 @@ How will this script accomplish its goal?
 		* The above command would make the DB exactly 10000 kmer:taxon
 		  pairs. Seems small. Here, a decision can be later made. However,
 		  presumably the smaller the database, the faster the search. So,
-		  There is likely some room here for optimisation. Unclear how much
+		  there is likely some room here for optimisation. Unclear how much
 		  time we would gain by going from 1M kmer:taxon pairs to 100K or 
 	   	  less, and what that would mean for our accuracy.
 
